@@ -5,7 +5,7 @@
 * `pip install virtualenv`
 * `virtualenv .musicapp`
 * `source .musicapp/bin/activate`
-* `pip install -R requirements.txt`
+* `pip install -r requirements.txt`
 * `gunicorn api.app:app` this will serve the APIs on http://localhost:8000
 
 * Run http://localhost:8000/ping on your browser to test the APIs are working, it shows you `pong`
