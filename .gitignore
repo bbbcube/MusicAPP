@@ -1,0 +1,10 @@
+!.gitkeep
+node_modules/
+.musicapp
+.DS_Store
+.vscode
+.idea
+*.sublime-workspace
+*.sublime-project
+*.pyc
+__pycache__

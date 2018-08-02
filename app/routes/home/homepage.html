@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-sm musiclist">
+        <h2>Music Tracks</h2>{{vm.hello}}
+        <div class="input-group mb-3 searchgroup">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </span>
+            </div>
+            <input type="text" ng-model="vm.searchstring" class="form-control" placeholder="search title">
+        </div>
+        <div class="mlist">
+            <ul class="list-group">
+                <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center" ng-repeat="r in vm.records | filter: vm.searchstring">
+                    {{r.title}}
+                    <span class="editbtn badge" ng-click="vm.editRecord($index);">
+                        <i class="material-icons">edit</i>
+                    </span>
+                    <span class="badge">
+                        <star-rating-comp show-half-stars="true" rating="r.rating" color="'default'" read-only="true"></star-rating-comp>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-outline-dark addtrack" data-toggle="modal" data-target="#addmusic">Add New Track</button>
+        <!-- <nav class="songination">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav> -->
+    </div>
+    <div class="col-sm genres">
+        <h2>Track's Genres</h2>
+        <div class="mlist genrelist">
+            <ul class="list-group">
+                <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center" ng-repeat="gn in vm.genres">
+                    <a href="/?genre={{gn.genre_title}}">{{gn.genre_title}}</a>
+                    <span class="editbtn" ng-click="vm.editGenre($index);">
+                        <i class="material-icons">edit</i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-outline-dark addgenre" data-toggle="modal" data-target="#addgenre">Add New Genre</button>
+    </div>
+</div>
+
+<!-- add edit genre modal -->
+<div class="modal fade" id="addgenre" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form ng-submit="vm.addNewGenre(vm.index);">
+                <div class="modal-header">
+                    <h5 class="modal-title">Genre</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Genre Title</label>
+                        <input type="text" class="form-control" ng-model="vm.egenre.genre_title" ng-required="true">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- add edit records-->
+<div class="modal fade" id="addmusic" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form ng-submit="vm.addEditRecord(vm.index);">
+                <div class="modal-header">
+                    <h5 class="modal-title">Record</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Record Title</label>
+                        <input type="text" class="form-control" ng-model="vm.erecord.title" ng-required="true" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="genre">Genre</label>
+                            </div>
+                            <select ng-options="item as item.genre_title for item in vm.genres track by item._id.$oid" class="custom-select" id="genre"
+                                ng-model="vm.erecord.genre" ng-required="true">
+                                <option selected>Choose...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Rate this music</label>
+                        <star-rating-comp on-rating-change="vm.onClickRate($event)" show-half-stars="true" rating="vm.erecord.rating" color="'default'"></star-rating-comp>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

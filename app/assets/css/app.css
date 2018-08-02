@@ -1,0 +1,76 @@
+[ng-cloak] {
+    display: none;
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.musiclist {
+    padding: 37px 20px;
+    text-align: center;
+}
+
+.searchgroup {
+    border: 2px solid;
+    border-radius: 9px;
+}
+.searchgroup span.input-group-text{
+    background-color: #ffffff;
+    border: none;
+}
+.searchgroup .input-group-prepend {
+    padding: 1px;
+}
+.searchgroup .form-control {
+    border: none;
+    border-radius: 1.25rem;
+}
+
+.mlist {
+    margin-top: 30px;
+    margin-bottom: 34px;
+}
+.mlist ul {
+    border: 2px solid;
+}
+.mlist li{
+    border-bottom: 3px solid;
+}
+.mlist li:last-child {
+    border-bottom: none;
+}
+button.addtrack {
+    border: 2px solid;
+    width: 18rem;
+}
+
+.genres {
+    padding-top: 77px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+.mlist {
+    max-height: 284px;
+    overflow-y: auto;
+}
+.genrelist li {
+    height: 70px;
+}
+.genrelist a {
+    color: #000;
+}
+button.addgenre {
+    border: 2px solid;
+    height: 45px;
+}
+
+span.editbtn {
+    display: none;
+    cursor: pointer;
+}
+.mlist li:hover span.editbtn {
+    display: block;
+}
