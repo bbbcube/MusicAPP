@@ -1,5 +1,6 @@
 !.gitkeep
 node_modules/
+package-lock.json
 .musicapp
 .DS_Store
 .vscode
